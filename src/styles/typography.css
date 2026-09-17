@@ -1,0 +1,57 @@
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-serif);
+  color: var(--color-archive-white);
+  background-color: var(--color-void);
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  margin: 0;
+  color: var(--color-archive-white);
+}
+
+/* Distinct emotional typography */
+.emotional-text {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  line-height: 1.8;
+  color: var(--color-archive-white);
+  max-width: 65ch;
+  margin-bottom: var(--space-md);
+}
+
+/* Metadata and structural text */
+.meta, .location, time, .frame-tag, .frame-val, .music-tag, .voice-meta, .voice-time, .mono-fragment {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.mono-fragment {
+  font-size: 0.85rem;
+  color: var(--color-ghost-text);
+  margin-top: var(--space-sm);
+  margin-bottom: var(--space-md);
+}
+
+.title {
+  font-size: 3.5rem;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--space-sm);
+}
+
+.subtitle {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: var(--color-memory-white);
+  letter-spacing: 0.2em;
+}

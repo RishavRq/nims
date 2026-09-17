@@ -1,0 +1,28 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Dependencies
+node_modules
+.DS_Store
+
+# Build
+dist
+dist-ssr
+
+# IDE
+.vscode/*
+!.vscode/extensions.json
+.idea
+
+# Environment
+*.local
+*.local.md
+
+# Private Creative Context — NEVER deploy or push
+PRIVATE_CONTEXT/
+
+# Backups
+.failsafe_backup/
+push_to_github.bat

@@ -1,0 +1,141 @@
+/* Audio Machine (Global) */
+.audio-machine {
+  position: fixed;
+  top: var(--space-md);
+  right: var(--space-md);
+  z-index: 100;
+}
+
+.audio-toggle {
+  background: none;
+  border: none;
+  color: var(--color-weathered-grey);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  cursor: pointer;
+  padding: 0;
+  transition: color var(--transition-fast);
+}
+
+.audio-toggle:hover {
+  color: var(--color-memory-white);
+}
+
+.audio-toggle[aria-pressed="true"] {
+  color: var(--color-alive-green);
+}
+
+/* Empty Photographic Frames */
+.empty-frame-small,
+.empty-frame-large {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--color-deep-surface);
+  background-color: transparent;
+  margin-top: var(--space-md);
+  margin-bottom: var(--space-md);
+}
+
+.empty-frame-small {
+  width: 100%;
+  max-width: 200px;
+  height: 80px;
+}
+
+.empty-frame-large {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-color: var(--color-hostel-concrete);
+}
+
+.empty-final {
+  border-color: var(--color-room-black);
+  opacity: 0.3;
+}
+
+/* Voice Artifact Controls */
+.voice-artifact {
+  margin-top: var(--space-md);
+  padding-top: var(--space-sm);
+  border-top: 1px dotted var(--color-room-black);
+}
+
+.voice-controls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+}
+
+.voice-play-trigger {
+  background: none;
+  border: none;
+  color: var(--color-memory-white);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  cursor: pointer;
+  padding: 0;
+  transition: color var(--transition-fast);
+}
+
+.voice-play-trigger:hover {
+  color: var(--color-archive-white);
+}
+
+.voice-waveform-track {
+  flex-grow: 1;
+  height: 2px;
+  background-color: var(--color-deep-surface);
+  position: relative;
+  cursor: pointer;
+}
+
+.voice-progress-fill {
+  height: 100%;
+  width: 0%;
+  background-color: var(--color-mist);
+  transition: width 0.1s linear;
+}
+
+/* Unfinished Game Component */
+.block-game {
+  border: 1px solid var(--color-hostel-concrete);
+  padding: var(--space-md);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--color-ghost-text);
+}
+
+.game-meta div {
+  margin-bottom: 0.25rem;
+}
+
+.game-head {
+  color: var(--color-memory-white);
+  font-size: 1rem;
+  margin-bottom: var(--space-sm) !important;
+}
+
+.game-download-btn {
+  display: inline-block;
+  margin-top: var(--space-md);
+  padding: var(--space-sm);
+  border: 1px solid var(--color-weathered-grey);
+  color: var(--color-weathered-grey);
+  text-decoration: none;
+  text-align: center;
+  transition: color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.game-download-btn:hover:not(.is-pending) {
+  color: var(--color-archive-white);
+  border-color: var(--color-archive-white);
+}
+
+.game-download-btn.is-pending {
+  color: var(--color-buried-text);
+  border-color: var(--color-room-black);
+  cursor: not-allowed;
+}

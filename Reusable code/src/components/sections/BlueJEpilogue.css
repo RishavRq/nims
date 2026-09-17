@@ -1,0 +1,764 @@
+/* ═══════════════════════════════════════════════════════════════
+   BLUEJ EPILOGUE — Faithful BlueJ IDE Recreation
+   Classic Java IDE from the early 2010s school computers
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Section container ───────────────────────────────────────── */
+.bluej-epilogue-section {
+  position: relative;
+  width: 100%;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 8vh 0 0;
+}
+
+/* ── Intro text ──────────────────────────────────────────────── */
+.bluej-intro-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 14vh 24px 8vh;
+  text-align: center;
+  min-height: 52vh;
+}
+
+/* ── Desktop window container ────────────────────────────────── */
+.bluej-container {
+  position: relative;
+  width: 95vw;
+  max-width: 820px;
+  height: 560px;
+  min-height: 520px;
+  margin: 0 auto;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.6),
+    0 0 80px rgba(0, 0, 0, 0.4);
+  background: #d4d0c8; /* Classic Win2K/XP grey */
+}
+
+@media (max-width: 640px) {
+  .bluej-container {
+    width: 98vw;
+    height: 480px;
+    min-height: 440px;
+  }
+}
+
+/* ── Main workspace window ───────────────────────────────────── */
+.bluej-window {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #d4d0c8;
+}
+
+/* ── Simulated cursor ────────────────────────────────────────── */
+.bluej-sim-cursor {
+  position: absolute;
+  pointer-events: none;
+  z-index: 9999;
+  transition: left 0.5s cubic-bezier(0.33, 0, 0.2, 1),
+              top 0.5s cubic-bezier(0.33, 0, 0.2, 1),
+              transform 0.12s ease;
+  filter: drop-shadow(1px 2px 3px rgba(0, 0, 0, 0.35));
+}
+
+/* ── Title bar ───────────────────────────────────────────────── */
+.bluej-titlebar {
+  display: flex;
+  align-items: center;
+  height: 28px;
+  background: linear-gradient(180deg, #3b82f6 0%, #2563eb 40%, #1d4ed8 100%);
+  padding: 0 6px;
+  user-select: none;
+  flex-shrink: 0;
+}
+
+.bluej-titlebar-icon {
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 6px;
+}
+
+.bluej-diamond {
+  width: 10px;
+  height: 10px;
+  background: #93c5fd;
+  transform: rotate(45deg);
+  border: 1px solid #1e40af;
+}
+
+.bluej-diamond-sm {
+  width: 8px;
+  height: 8px;
+  background: #93c5fd;
+  transform: rotate(45deg);
+  border: 1px solid #1e40af;
+  margin-right: 6px;
+}
+
+.bluej-titlebar-text {
+  flex: 1;
+  color: white;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+.bluej-titlebar-controls {
+  display: flex;
+  gap: 2px;
+}
+
+.bluej-ctrl {
+  width: 22px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-family: 'Segoe UI', sans-serif;
+  color: white;
+  border-radius: 2px;
+}
+
+.bluej-ctrl-min { background: #3b82f6; }
+.bluej-ctrl-max { background: #3b82f6; }
+.bluej-ctrl-close { background: #ef4444; }
+.bluej-ctrl-sm {
+  width: 16px;
+  height: 16px;
+  font-size: 10px;
+  position: absolute;
+  right: 6px;
+  top: 4px;
+}
+
+/* ── Menu bar ────────────────────────────────────────────────── */
+.bluej-menubar {
+  display: flex;
+  gap: 0;
+  height: 24px;
+  align-items: center;
+  background: #f0f0f0;
+  border-bottom: 1px solid #b0b0b0;
+  padding: 0 4px;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  font-size: 12px;
+  color: #333;
+  flex-shrink: 0;
+}
+
+.bluej-menubar > span {
+  padding: 2px 8px;
+  cursor: default;
+}
+
+/* ── Body layout ─────────────────────────────────────────────── */
+.bluej-body {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  background: #e8e4da; /* Cream workspace BG */
+  position: relative;
+}
+
+/* ── Left toolbar ────────────────────────────────────────────── */
+.bluej-toolbar {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 8px 6px;
+  background: #d4d0c8;
+  border-right: 1px solid #b0b0b0;
+  min-width: 78px;
+  align-items: stretch;
+  flex-shrink: 0;
+}
+
+.bluej-toolbar-btn {
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  font-size: 11px;
+  padding: 4px 6px;
+  background: #e8e4e0;
+  border: 1px solid #999;
+  border-radius: 2px;
+  cursor: default;
+  text-align: center;
+  color: #333;
+  user-select: none;
+}
+
+.bluej-toolbar-btn:hover {
+  background: #d8d4d0;
+}
+
+.bluej-arrow-btn {
+  font-size: 10px;
+  letter-spacing: -1px;
+}
+
+.bluej-arrow-dashed,
+.bluej-arrow-solid {
+  font-family: monospace;
+  font-size: 11px;
+}
+
+/* ── Canvas ──────────────────────────────────────────────────── */
+.bluej-canvas {
+  flex: 1;
+  min-height: 0;
+  position: relative;
+  background: linear-gradient(160deg, #f0ece4 0%, #e6e0d4 100%);
+  border: 1px solid #b0b0b0;
+  padding: 16px;
+  overflow: hidden;
+}
+
+/* ── Package icon ────────────────────────────────────────────── */
+.bluej-package-icon {
+  width: 40px;
+  height: 48px;
+  position: relative;
+}
+
+.bluej-package-page {
+  width: 36px;
+  height: 44px;
+  background: white;
+  border: 1px solid #bbb;
+  position: relative;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.bluej-package-page::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 10px;
+  height: 10px;
+  border-left: 1px solid #bbb;
+  border-bottom: 1px solid #bbb;
+  background: #e8e4e0;
+}
+
+/* ── Class box ───────────────────────────────────────────────── */
+.bluej-class-box {
+  position: absolute;
+  top: 70px;
+  left: 90px;
+  width: 120px;
+  cursor: default;
+  transition: all 0.3s ease;
+  user-select: none;
+}
+
+@media (max-width: 480px) {
+  .bluej-class-box {
+    left: 45px;
+    top: 50px;
+    width: 100px;
+  }
+}
+
+.bluej-class-label {
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  text-align: center;
+  padding: 3px 4px;
+  color: #222;
+  border: 1px solid #8a7a5a;
+  border-bottom: none;
+  background: #f5f0e5;
+  position: relative;
+  z-index: 1;
+}
+
+.bluej-class-body {
+  height: 32px;
+  border: 1px solid #8a7a5a;
+}
+
+/* Hatched (uncompiled) state — signature BlueJ diagonal stripes */
+.bluej-class-hatched .bluej-class-body {
+  background: repeating-linear-gradient(
+    45deg,
+    #f0dca0,
+    #f0dca0 5px,
+    #d8be78 5px,
+    #d8be78 10px
+  );
+}
+
+/* Compiled state — solid warm yellow */
+.bluej-class-compiled .bluej-class-body {
+  background: linear-gradient(180deg, #f5e4b2 0%, #e8d085 100%);
+}
+
+.bluej-class-compiled .bluej-class-label {
+  background: #fbf5df;
+}
+
+/* ── Object bench ────────────────────────────────────────────── */
+.bluej-object-bench {
+  height: 42px;
+  background: linear-gradient(180deg, #e8e4d8 0%, #dcd8cc 100%);
+  border-top: 1px solid #b0b0b0;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* ── Status bar ──────────────────────────────────────────────── */
+.bluej-statusbar {
+  height: 24px;
+  background: #d4d0c8;
+  border-top: 1px solid #b0b0b0;
+  padding: 2px 10px;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  font-size: 11px;
+  color: #333;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   CREATE CLASS DIALOG
+   ═══════════════════════════════════════════════════════════════ */
+.bluej-dialog-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.12);
+}
+
+.bluej-dialog {
+  width: 300px;
+  background: #ececec;
+  border: 2px solid #6ba8e5;
+  border-radius: 4px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+
+@media (min-width: 640px) {
+  .bluej-dialog {
+    width: 340px;
+  }
+}
+
+.bluej-dialog-titlebar {
+  display: flex;
+  align-items: center;
+  height: 26px;
+  background: linear-gradient(180deg, #3b82f6 0%, #2563eb 100%);
+  padding: 0 8px;
+  color: white;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  position: relative;
+  user-select: none;
+}
+
+.bluej-dialog-body {
+  padding: 16px;
+}
+
+.bluej-dialog-label {
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 12px;
+  color: #333;
+  margin-bottom: 4px;
+}
+
+.bluej-dialog-input {
+  width: 100%;
+  height: 26px;
+  background: #fefde8;
+  border: 1px solid #999;
+  padding: 2px 6px;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 13px;
+  color: #222;
+  display: flex;
+  align-items: center;
+}
+
+.bluej-text-cursor {
+  animation: bluej-blink 0.8s step-end infinite;
+  color: #333;
+  font-weight: normal;
+}
+
+@keyframes bluej-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.bluej-radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 4px 0;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 12px;
+  color: #333;
+}
+
+.bluej-radio-group label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: default;
+}
+
+.bluej-radio-group input[type="radio"] {
+  margin: 0;
+  accent-color: #333;
+}
+
+.bluej-dialog-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 16px;
+}
+
+.bluej-btn-ok,
+.bluej-btn-cancel {
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 12px;
+  padding: 4px 24px;
+  border: 1px solid #888;
+  border-radius: 3px;
+  cursor: default;
+  color: #222;
+  background: #e4e4e4;
+  user-select: none;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   CODE EDITOR
+   ═══════════════════════════════════════════════════════════════ */
+.bluej-editor-window {
+  position: absolute;
+  inset: 0;
+  background: #f5f5f0;
+  z-index: 80;
+  display: flex;
+  flex-direction: column;
+}
+
+.bluej-editor-menubar {
+  display: flex;
+  gap: 0;
+  height: 22px;
+  align-items: center;
+  background: #f0f0f0;
+  border-bottom: 1px solid #c0c0c0;
+  padding: 0 4px;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  font-size: 12px;
+  color: #333;
+  flex-shrink: 0;
+}
+
+.bluej-editor-menubar > span {
+  padding: 2px 8px;
+  cursor: default;
+}
+
+.bluej-editor-tab {
+  background: #f0f0f0;
+  padding: 0 4px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #c0c0c0;
+  flex-shrink: 0;
+}
+
+.bluej-editor-tab-label {
+  background: white;
+  border: 1px solid #c0c0c0;
+  border-bottom: none;
+  padding: 2px 10px;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 11px;
+  color: #333;
+  border-radius: 3px 3px 0 0;
+}
+
+.bluej-editor-toolbar {
+  display: flex;
+  gap: 4px;
+  padding: 4px 6px;
+  background: #e8e4e0;
+  border-bottom: 1px solid #c0c0c0;
+  flex-wrap: wrap;
+  flex-shrink: 0;
+}
+
+.bluej-editor-tbtn {
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  font-size: 11px;
+  padding: 2px 10px;
+  background: #f0ece8;
+  border: 1px solid #aaa;
+  border-radius: 2px;
+  cursor: default;
+  color: #333;
+  user-select: none;
+}
+
+.bluej-editor-tbtn:hover {
+  background: #e0dcd8;
+}
+
+/* ── Editor body ─────────────────────────────────────────────── */
+.bluej-editor-body {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: white;
+}
+
+.bluej-editor-margin {
+  width: 16px;
+  background: #f0ece8;
+  border-right: 1.5px solid #d9777f;
+  flex-shrink: 0;
+}
+
+.bluej-editor-code {
+  flex: 1;
+  min-height: 0;
+  padding: 6px 12px;
+  overflow-x: auto;
+  background: #fffffe;
+}
+
+/* Top Javadoc comment box — authentic BlueJ appearance */
+.bluej-javadoc-box {
+  background: #eaf8ea;
+  border: 1px solid #b8e2b8;
+  padding: 4px 8px;
+  margin-bottom: 8px;
+  border-radius: 2px;
+}
+
+.bluej-javadoc-text {
+  font-family: 'Courier New', 'Courier', monospace;
+  font-size: 11px;
+  color: #2b7a2b;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.bluej-code-pre {
+  font-family: 'Courier New', 'Courier', monospace;
+  font-size: 12px;
+  line-height: 1.45;
+  color: #222;
+  white-space: pre;
+  margin: 0;
+  tab-size: 4;
+}
+
+/* Syntax highlighting */
+.bluej-kw {
+  color: #7b0052;
+  font-weight: 700;
+}
+
+.bluej-str {
+  color: #2a6e3f;
+}
+
+.bluej-comment {
+  color: #888;
+  font-style: italic;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   CONTEXT MENU
+   ═══════════════════════════════════════════════════════════════ */
+.bluej-context-menu {
+  position: absolute;
+  z-index: 120;
+  background: #f5f5f5;
+  border: 1px solid #888;
+  box-shadow: 2px 3px 8px rgba(0, 0, 0, 0.25);
+  padding: 2px 0;
+  min-width: 175px;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 12px;
+  color: #333;
+  user-select: none;
+}
+
+.bluej-ctx-item {
+  padding: 3px 18px;
+  cursor: default;
+  white-space: nowrap;
+}
+
+.bluej-ctx-item:hover {
+  background: #d0e8ff;
+}
+
+.bluej-ctx-highlight {
+  background: #3b82f6 !important;
+  color: white !important;
+}
+
+.bluej-ctx-red {
+  color: #b91c1c;
+}
+
+.bluej-ctx-separator {
+  height: 1px;
+  background: #ccc;
+  margin: 3px 4px;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   OUTPUT TERMINAL
+   ═══════════════════════════════════════════════════════════════ */
+.bluej-terminal-window {
+  position: absolute;
+  inset: 0;
+  z-index: 90;
+  display: flex;
+  flex-direction: column;
+  background: #d4d0c8;
+}
+
+.bluej-terminal-menubar {
+  height: 22px;
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+  background: #f0f0f0;
+  border-bottom: 1px solid #b0b0b0;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 12px;
+  color: #333;
+  flex-shrink: 0;
+}
+
+.bluej-terminal-menubar > span {
+  padding: 2px 8px;
+  cursor: default;
+}
+
+.bluej-terminal-body {
+  flex: 1;
+  min-height: 0;
+  background: white;
+  padding: 14px 16px;
+  overflow-y: auto;
+}
+
+.bluej-terminal-text {
+  font-family: 'Courier New', 'Courier', monospace;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #111;
+  white-space: pre-wrap;
+  word-break: break-word;
+  margin: 0;
+}
+
+/* ── Coda text ───────────────────────────────────────────────── */
+.bluej-coda {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 44px 24px 28px;
+  min-height: 140px;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   RESPONSIVE — ensure the illusion works on mobile
+   ═══════════════════════════════════════════════════════════════ */
+@media (max-width: 480px) {
+  .bluej-container {
+    width: 98vw;
+    height: 440px;
+  }
+
+  .bluej-toolbar {
+    min-width: 60px;
+    padding: 6px 3px;
+  }
+
+  .bluej-toolbar-btn {
+    font-size: 9px;
+    padding: 2px 2px;
+  }
+
+  .bluej-menubar,
+  .bluej-editor-menubar,
+  .bluej-terminal-menubar {
+    font-size: 10px;
+    height: 20px;
+  }
+
+  .bluej-titlebar {
+    height: 24px;
+  }
+
+  .bluej-titlebar-text {
+    font-size: 10px;
+  }
+
+  .bluej-dialog {
+    width: 92%;
+  }
+
+  .bluej-code-pre {
+    font-size: 9px;
+  }
+
+  .bluej-editor-line-num {
+    font-size: 9px;
+    min-width: 22px;
+  }
+
+  .bluej-terminal-text {
+    font-size: 10.5px;
+  }
+
+  .bluej-context-menu {
+    font-size: 10px;
+    min-width: 140px;
+  }
+}

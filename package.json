@@ -1,0 +1,23 @@
+{
+  "name": "the-archive-landing",
+  "version": "1.0.0",
+  "description": "Official landing page for THE ARCHIVE — an autobiographical interactive 3D memory project",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js",
+    "serve": "npx -y serve . -l 3000"
+  },
+  "keywords": [
+    "archive",
+    "autobiographical",
+    "memory",
+    "interactive-3d",
+    "darjeeling",
+    "kalimpong",
+    "siliguri"
+  ],
+  "author": "",
+  "license": "UNLICENSED"
+}

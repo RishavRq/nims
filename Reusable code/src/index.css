@@ -1,0 +1,126 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --night: #1a1f2e;
+    --night-deep: #12151f;
+    --ink: #2d2d2d;
+    --ink-soft: #5a5a5a;
+    --ink-faint: #8a8a8a;
+    --paper: #f4f0e8;
+    --paper-dim: #e8e2d6;
+    --forest: #4a5d4a;
+    --wine: #6b3a3a;
+    --rose: #b8908a;
+    --amber: #c9a96e;
+    --mist: #8a9aaa;
+    --dawn: #d4c4a8;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  html, body, #root {
+    @apply w-full m-0 p-0;
+    min-height: 100dvh;
+    background-color: var(--night);
+    color: var(--paper-dim);
+    font-family: 'EB Garamond', Georgia, serif;
+  }
+
+  /* Respect reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  ::selection {
+    background-color: rgba(107, 58, 58, 0.3);
+    color: var(--paper);
+  }
+}
+
+@layer components {
+  /* Film grain overlay — opacity controlled by component prop */
+  .film-grain {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9999;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 128px;
+    transition: opacity 3s ease-in-out;
+  }
+
+  /* Section base */
+  .section {
+    @apply relative w-full flex flex-col items-center justify-center px-6 py-24 md:py-32;
+    min-height: 100dvh;
+  }
+
+  .section-short {
+    @apply relative w-full flex flex-col items-center justify-center px-6 py-16 md:py-24;
+    min-height: 60dvh;
+  }
+
+  /* Literary text sizes */
+  .text-title {
+    @apply font-serif text-4xl md:text-6xl font-light tracking-[0.15em] leading-tight;
+    color: var(--paper);
+  }
+
+  .text-subtitle {
+    @apply font-mono text-xs md:text-sm font-light tracking-[0.2em] uppercase;
+    color: var(--ink-faint);
+  }
+
+  .text-fragment {
+    @apply font-body text-lg md:text-xl leading-relaxed;
+    color: var(--paper-dim);
+  }
+
+  .text-fragment-large {
+    @apply font-serif text-2xl md:text-3xl font-light leading-relaxed italic;
+    color: var(--paper);
+  }
+
+  .text-meta {
+    @apply font-mono text-[10px] md:text-xs font-light tracking-[0.15em] uppercase;
+    color: var(--ink-faint);
+  }
+
+  /* Paper texture for letter — enhanced physical presence */
+  .paper-surface {
+    background-color: var(--paper);
+    background-image:
+      radial-gradient(circle at 20% 80%, rgba(201, 169, 110, 0.06) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(107, 58, 58, 0.04) 0%, transparent 50%),
+      url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paper'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.04' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paper)' opacity='0.03'/%3E%3C/svg%3E");
+    box-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.06),
+      0 4px 8px rgba(0, 0, 0, 0.08),
+      0 12px 28px rgba(0, 0, 0, 0.12),
+      0 20px 40px rgba(0, 0, 0, 0.08),
+      inset 0 0 60px rgba(0, 0, 0, 0.03);
+  }
+}
+
+@layer utilities {
+  .delay-100 { animation-delay: 100ms; }
+  .delay-200 { animation-delay: 200ms; }
+  .delay-300 { animation-delay: 300ms; }
+  .delay-500 { animation-delay: 500ms; }
+  .delay-700 { animation-delay: 700ms; }
+  .delay-1000 { animation-delay: 1000ms; }
+  .delay-1500 { animation-delay: 1500ms; }
+  .delay-2000 { animation-delay: 2000ms; }
+}

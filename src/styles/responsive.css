@@ -1,0 +1,32 @@
+/* Responsive Adjustments */
+
+@media (max-width: 768px) {
+  .archive-body {
+    padding: var(--space-lg) var(--space-sm);
+  }
+
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .emotional-text {
+    font-size: 1.15rem;
+  }
+
+  .record-title {
+    font-size: 1.25rem;
+  }
+
+  .record-header {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .document {
+    gap: var(--space-xl);
+  }
+
+  .empty-frame-large {
+    aspect-ratio: 1 / 1;
+  }
+}

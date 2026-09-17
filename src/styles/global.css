@@ -1,0 +1,159 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.archive-body {
+  background-color: var(--color-void);
+  padding: var(--space-xl) var(--space-md);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.document {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xxl); /* Huge negative space between major sections */
+}
+
+/* Base fade-in class for intersection observer */
+.fade-in-archive {
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity var(--transition-slow), transform var(--transition-slow);
+}
+.fade-in-archive.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Structural blocks */
+.block-cover,
+.block-reason,
+.block-timeline,
+.block-game,
+.block-final {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Timeline Layout */
+.block-timeline {
+  gap: var(--space-xl);
+}
+
+.record {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  padding-bottom: var(--space-lg);
+  border-bottom: 1px solid var(--color-room-black);
+}
+
+.record:last-child {
+  border-bottom: none;
+}
+
+.gap-record {
+  padding-top: var(--space-lg);
+  padding-bottom: var(--space-lg);
+}
+
+.record-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 0.85rem;
+  color: var(--color-ghost-text);
+  margin-bottom: var(--space-sm);
+}
+
+.record-title {
+  font-size: 1.5rem;
+  color: var(--color-memory-white);
+  margin-bottom: var(--space-sm);
+}
+
+.record-music {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--color-weathered-grey);
+  margin-top: var(--space-md);
+}
+
+.music-tag {
+  color: var(--color-buried-text);
+  margin-right: 0.5rem;
+}
+
+/* The Interruption / Deterioration states */
+/* As we go deeper, we increase spacing, fade colors, remove borders */
+
+.deterioration-1 {
+  opacity: 0.9;
+}
+
+.deterioration-2 {
+  opacity: 0.8;
+  border-bottom: 1px dashed var(--color-room-black);
+}
+
+.deterioration-3 {
+  opacity: 0.6;
+  border-bottom: none;
+  padding-bottom: var(--space-xl);
+}
+
+.deterioration-4 {
+  opacity: 0.4;
+  gap: var(--space-md);
+}
+
+.deterioration-5 {
+  opacity: 0.2;
+}
+
+/* Final frame specifics */
+.block-final {
+  text-align: center;
+  align-items: center;
+  gap: var(--space-lg);
+  padding-top: var(--space-xxl);
+  padding-bottom: var(--space-xxl);
+}
+
+.final-title {
+  font-size: 2rem;
+  letter-spacing: 0.1em;
+  color: var(--color-buried-text);
+}
+
+.final-state {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  color: var(--color-dead-green);
+  letter-spacing: 0.2em;
+}
+
+.final-date {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--color-ghost-text);
+}
+
+.final-end {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-room-black);
+  margin-top: var(--space-xxl);
+}

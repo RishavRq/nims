@@ -1,0 +1,34 @@
+:root {
+  --color-void: #0B0C0C;
+  --color-room-black: #111313;
+  --color-deep-surface: #181B1B;
+  --color-hostel-concrete: #272B2A;
+  --color-weathered-grey: #555957;
+  --color-archive-white: #D8D4C9;
+  --color-memory-white: #BEB9AD;
+  --color-ghost-text: #727875;
+  --color-buried-text: #454A48;
+  --color-mist: #87908E;
+  --color-cold-blue: #4C5B5D;
+  --color-rust: #765C50;
+  --color-memory-green: #58665C;
+  --color-october-stone: #817668;
+  --color-alive-green: #66735F;
+  --color-winter: #414A45;
+  --color-dead-green: #303634;
+  --color-final-void: #080909;
+
+  --font-serif: 'Cormorant Garamond', 'EB Garamond', serif;
+  --font-mono: 'JetBrains Mono', 'Space Mono', monospace;
+
+  /* Spacing constraints to enforce negative space */
+  --space-sm: 1rem;
+  --space-md: 2rem;
+  --space-lg: 4rem;
+  --space-xl: 8rem;
+  --space-xxl: 16rem;
+
+  /* Transitions for subtle movement */
+  --transition-slow: 1.2s ease;
+  --transition-fast: 0.3s ease;
+}
