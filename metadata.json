@@ -1,0 +1,6 @@
+{
+  "name": "THE ARCHIVE",
+  "description": "Official landing page for THE ARCHIVE — an autobiographical interactive 3D memory project",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
